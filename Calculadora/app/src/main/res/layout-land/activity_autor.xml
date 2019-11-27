@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AutorActivity">
+
+    <Button
+        android:id="@+id/btVolver"
+        android:layout_width="134dp"
+        android:layout_height="47dp"
+        android:onClick="btVolver"
+        android:text="Volver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvUltimoCalculo" />
+
+    <TextView
+        android:id="@+id/tvUltimoCalculo"
+        android:layout_width="264dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="8dp"
+        android:text="Ultimo Calculo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvAutor" />
+
+    <TextView
+        android:id="@+id/tvAutor"
+        android:layout_width="413dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="16dp"
+        android:text="Autor:\nDARIO ALBERTO FERNANDEZ TELLEZ\n
+        CODIGO DE ESTUDIANTE:\n 1710138\n
+        UNIVERSIDAD DEL VALLE"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/tvUltimoCalculo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="163dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:foreground="@drawable/logo"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/tvAutor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
