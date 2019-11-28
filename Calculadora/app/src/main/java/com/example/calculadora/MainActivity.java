@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
      public void CapturaNum1(View view){
         tvScreen=(TextView) findViewById(R.id.tvPantalla);
         num1=Double.parseDouble(tvScreen.getText().toString());
-        tvScreen.setText(" ");
+        tvScreen.setText("");
     }
     public void Sumar(View view){
         operador="+";
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         CapturaNum1(view);
     }
     public void Potencia(View view){
-        operador="exp";
+        operador="^";
         tvScreen=(TextView)findViewById(R.id.tvPantalla);
         try{
             num1=Double.parseDouble(tvScreen.getText().toString());
@@ -99,10 +99,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void Raiz(View view){
         tvScreen=(TextView)findViewById(R.id.tvPantalla);
+        operador="raiz";
         try{
             num1=Double.parseDouble(tvScreen.getText().toString());
-            resultado=Math.sqrt(num1);
-            tvScreen.setText(String.valueOf(resultado));
+            tvScreen.setText("Raiz (" + num1 + ")");
+
         }catch (NumberFormatException nfe){ }
     }
     public void Borrar(View view){
@@ -115,13 +116,14 @@ public class MainActivity extends AppCompatActivity {
     public void Limpiar(View view){
         num1=0.0;
         num2=0.0;
+
         tvScreen=(TextView)findViewById(R.id.tvPantalla);
         tvScreen.setText(" ");
     }
     public void GuardaOperacion(){
         tvScreen=(TextView)findViewById(R.id.tvPantalla);
         num2=Double.parseDouble(tvScreen.getText().toString());
-        operacion=""+num1+" "+ operador + num2;
+        operacion=""+num1+" "+ operador + " " + num2;
 
     }
     public void btMemoria(View view){
@@ -136,34 +138,40 @@ public class MainActivity extends AppCompatActivity {
     }
     public void bIgual(View view){
         try {
-            tvScreen = (TextView) findViewById(R.id.tvPantalla);
-            num2 = Double.parseDouble(tvScreen.getText().toString());
-            switch (operador) {
-                case "+":
-                    resultado = num1 + num2;
-                    break;
-                case "-":
-                    resultado = num1 - num2;
-                    break;
-                case "*":
-                    resultado = num1 * num2;
-                    break;
-                case "/":
-                    resultado = num1 / num2;
-                    break;
-                case "exp":
-                    tvScreen = (TextView) findViewById(R.id.tvPantalla);
-                    num2 = Double.parseDouble(tvScreen.getText().toString());
-                    tvScreen.setText(" ");
-                    resultado = Math.pow(num1, num2);
-                    break;
+            if(operador.equals("raiz")){
+                resultado=Math.sqrt(num1);
+                operacion = "Raiz("+num1+")";
+            }else{
+                tvScreen = (TextView) findViewById(R.id.tvPantalla);
+                num2 = Double.parseDouble(tvScreen.getText().toString());
 
-                default:
-                    Toast.makeText(MainActivity.this, "Operacion Errada", Toast.LENGTH_SHORT).show();
+                switch (operador) {
+                    case "+":
+                        resultado = num1 + num2;
+                        break;
+                    case "-":
+                        resultado = num1 - num2;
+                        break;
+                    case "*":
+                        resultado = num1 * num2;
+                        break;
+                    case "/":
+                        resultado = num1 / num2;
+                        break;
+                    case "^":
+                        resultado = Math.pow(num1, num2);
+                        break;
+
+                    default:
+                        Toast.makeText(MainActivity.this, "Operacion Errada", Toast.LENGTH_SHORT).show();
+
+                }
+                GuardaOperacion();
 
             }
-            GuardaOperacion();
-            tvScreen.setText(" " + operacion + "\n = " + resultado);
+
+
+            tvScreen.setText("" + operacion + "\n = " + resultado);
         }catch(NumberFormatException nfe){}
     }
     public void btAutor(View view){
